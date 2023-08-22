@@ -1,18 +1,20 @@
 import sys
-si = sys.stdin.readline
+n = int(sys.stdin.readline())
 
-arr = {}
-for _ in range(int(si())):
-    x,y = si().strip().split('.')
-    # if x in arr:
-    #     arr[x] += 1
-    # else:
-    #     arr[x] = 1
-    if y in arr:
-        arr[y] += 1
-    else:
-        arr[y] = 1
+ext = []
+for _ in range(n):
+    ext.append(sys.stdin.readline().strip().split('.')[1])
 
-arr = sorted(arr.items())
-for i,e in arr:
-    print(i, e)
+ext.sort()
+
+i = 0
+while i < n:
+    cnt = 1
+    for j in range(i + 1, n):
+        if ext[j] == ext[i]: 
+            cnt += 1
+            i += 1
+        else:
+            break
+    print(ext[i], cnt)
+    i += 1
