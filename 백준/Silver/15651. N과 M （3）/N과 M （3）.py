@@ -1,12 +1,19 @@
-def dfs(n, lst):
-    if n == M: # 종료조건
-        ans.append(lst)
-        return
-    for j in range(1, N+1):
-        dfs(n+1, lst+[j])
+import sys
+si = sys.stdin.readline
+n, m = map(int, si().split())
 
-N, M = map(int, input().split())
-ans = []
-dfs(0, [])
-for lst in ans:
-    print(*lst)
+selected = [0 for _ in range(m)]
+used = [0 for _ in range(n+1)]
+
+def rec_func(k):
+    if k == m:
+        for x in selected:
+            sys.stdout.write(str(x) + ' ')
+        sys.stdout.write('\n')
+    else:
+        for cand in range(1,n+1):
+            selected[k] = cand
+            rec_func(k+1)
+            selected[k] = 0
+
+rec_func(0)
