@@ -3,6 +3,8 @@ si = sys.stdin.readline
 n , m = map(int, si().split())
 trees = list(map(int, si().split()))
 
+# H 높이로 잘랐을 때, M만큼을 얻을 수 있으면 true
+# 없으면 false를 return
 def determination(H):
     sum = 0
     for x in trees:
